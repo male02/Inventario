@@ -1,0 +1,69 @@
+package umariana.producto;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Maria 
+ */
+public class Producto {
+
+   import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+        ArrayList<Producto> misInventarios = new ArrayList<>();
+        boolean activo = true;
+
+        do {
+            System.out.println("Menu de opciones" 
+                + "1. Agregar Producto" 
+                + "2. Mostrar Inventario" 
+                + "3. Borrar Producto" 
+                + "4. Terminar Programa");
+
+            int opcion = lector.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese el nombre del producto");
+                    lector.nextLine(); 
+                    String nombreProducto = lector.nextLine();
+                    System.out.println("Ingrese el precio del producto");
+                    double precio = lector.nextDouble();
+                    System.out.println("Ingrese la cantidad del producto");
+                    int cantidad = lector.nextInt();
+                    System.out.println("Ingrese el id del producto");
+                    int idProducto = lector.nextInt();
+                    Producto nuevoProducto = new Producto (nombreProducto, precio, cantidad, idProducto);
+                    misProductos.add(nuevoProducto);
+                    System.out.println("Producto Agregado");
+                    break;
+                case 2:
+                    System.out.println("Inventario");
+                    
+                    for (Producto Inventario : misInventarios) {
+                        System.out.println(inventario.getNombreProducto());
+                        System.out.println("El precio del producto es: " + inventario.getPrecio());
+                        System.out.println("La cantidad del producto es: " + inventario.getCantidad());
+                        System.out.println("----------------------------------------");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Digite el id del producto a eliminar");
+                    int id = lector.nextInt();
+                    misInventarios.removeIf(inventario -> inventario.getIdProducto() == id);
+                    System.out.println("Producto con id: " + id + " eliminado");
+                    break;
+                case 4:
+                    System.out.println("Programa cerrado");
+                    activo = false;
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+
+        } while (activo);
+    }
+}
